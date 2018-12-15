@@ -58,16 +58,15 @@
         console.log(trainDestination);
         console.log(trainTime);
         console.log(trainFrequency);
-      })
+     
 
-      //ADD SOME EXTRA STUFF
+      var newRow= $("<tr>").append(
+        $("<td>").text(trainName),
+        $("<td>").text(trainDestination),
+        $("<td>").text(trainTime),
+        $("<td>").text(trainFrequency)
+      );
 
-      // var newRow= $("<tr>").append(
-      //   $("<td>").text(trainName),
-      //   $("<td>").text(trainDestination),
-      //   $("<td>").text(trainTime),
-      //   $("<td>").text(trainFrequency)
-      // );
-
-      // $("#table1 > tbody").append(newRow);
+      $("#table1 > tbody").append(newRow);
   })
+})
