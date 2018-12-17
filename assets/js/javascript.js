@@ -15,6 +15,10 @@
 //   $("#submitbtn").on("click", function(event) {
     $(document).ready(function(){
         $("#submitbtn").click(function(){
+
+    //       var currentTime = moment();
+    // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
           console.log("btn clicked")
           event.preventDefault();
 
@@ -28,6 +32,7 @@
           destination: trainDestination,
           time: trainTime,
           frequency: trainFrequency
+
       };
 
       database.ref().push(newTrain);
@@ -46,6 +51,10 @@
 
       });
 
+      var dt = new Date();
+          var time = dt.getHours() + ":" + dt.getMinutes();
+          // alert(time);
+
       database.ref().on("child_added", function(childSnapshot){
         console.log(childSnapshot.val());
 
@@ -58,15 +67,20 @@
         console.log(trainDestination);
         console.log(trainTime);
         console.log(trainFrequency);
+
+        var minsAway = time - trainTime;
+      // alert(minsAway);
      
 
       var newRow= $("<tr>").append(
         $("<td>").text(trainName),
         $("<td>").text(trainDestination),
         $("<td>").text(trainTime),
-        $("<td>").text(trainFrequency)
+        $("<td>").text(trainFrequency),
+        $("<td>").text(minsAway)
       );
 
       $("#table1 > tbody").append(newRow);
+      
   })
 })
